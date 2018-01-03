@@ -6,7 +6,7 @@
 makeCacheMatrix <- function(x = matrix()) {
   m <- NULL
   set <- function(y) {
-    x <<- solve(y)
+    x <<- y
     m <<- NULL
   }
   get <- function() x
@@ -33,7 +33,7 @@ cacheSolve <- function(x, ...) {
     return(m)
   }
   data <- x$get()
-  m <- mean(data, ...)
-  x$setmean(m)
+  m <- solve(data, ...)
+  x$setInverseMatrix (m)
   m
 }
